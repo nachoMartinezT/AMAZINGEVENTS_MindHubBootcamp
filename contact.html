@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Amazing Events</title>
+</head>
+
+<body class="container-fluid d-flex flex-column min-vh-100">
+    <header class="row header"> 
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark col-12">
+            <div class="container-fluid d-flex">
+                <a class="navbar-brand col-4" href="/index.html">
+                    <img class="logo-img" src="/img/Logo Amazing Events.png" alt="Logo Amazing Events">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse ml-auto col-7" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto w-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/upcoming.html">Upcoming Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/past.html">Past Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/stats.html">Stats</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid  text-center bg-dark text-secondary paginator-baner col-12 ">
+            <div class="row align-items-start w-100 col-12">
+                <div class="col-2">
+                    <a class="link-secondary" href="/past.html"><i
+                            class="bi bi-chevron-double-left  display-2"></i></a>
+                </div>
+                <div class="col-8"> <!-- style="color: #8A96A1" -->
+                    <h6 class="display-1" >Contact</h6>
+                </div>
+                <div class="col-2">
+                    <a class="link-secondary" href="/stats.html"><i
+                            class="bi bi-chevron-double-right display-2"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <main class="container container-fluid flex-grow-1 mt-auto row main bg-light">
+        <div class="text-center">
+            <h1>Amazing Events</h1>
+        </div>
+        <div class="container container-fluid mb-0 col-12">
+            <div class="row">
+              <div class="col-7 mx-auto">
+                <form >
+                  <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea class="form-control" id="mensaje" rows="5"></textarea>
+                  </div>
+                  <div class="clearfix text-right">
+                    <button type="submit" class="btn btn-primary float-right">Enviar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+    </main>
+    
+
+    <footer class="bg-dark text-white py-3 row footer">
+        <div class="container col-12">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://twitter.com/home"><i class="bi bi-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.instagram.com/?hl=en"><i class="bi bi-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <p class="mb-0">© 2023 Amazing Events</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

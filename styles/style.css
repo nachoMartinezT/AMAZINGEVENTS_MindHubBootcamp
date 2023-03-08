@@ -1,0 +1,78 @@
+
+
+nav {
+    color: #8A96A1;
+}
+header nav div {
+    color: #8A96A1;
+}
+
+div ul li a{
+    color: #8A96A1;
+}
+
+header div h6 {
+   color: #8A96A1;
+}
+
+.logo-img {
+    max-height: 40px;
+}
+
+header {
+    width: 100vw;
+}
+
+.paginator-baner {
+    width: 100%;
+}
+
+
+.cards {
+    transition: transform 0.2s;
+    height: 25rem;
+}
+
+/* @media screen and (max-width: 767px) {
+    .cards {
+      height: 22rem;
+    }
+  } */
+
+
+
+.card:hover {
+    transform: translateY(-3px);
+  }
+
+/* .cards img {
+    height: 10rem;
+} */
+  
+
+  h1 {
+    color: #D90368;
+  }
+
+  h6 .display {
+    color:  #8A96A1;
+  }
+
+ 
+  
+
+footer div ul li i {
+    color: #8A96A1;
+}
+
+footer p {
+    color: #8A96A1;
+}
+  
+  
+  
+  
+  
+  
+
+
