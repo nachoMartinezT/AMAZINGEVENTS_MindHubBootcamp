@@ -58,8 +58,8 @@ header {
     color:  #8A96A1;
   }
 
- 
-  
+
+
 
 footer div ul li i {
     color: #8A96A1;
@@ -70,6 +70,14 @@ footer p {
 }
   
   
+
+/* details.html */
+
+
+
+.container-details{
+  height: 100%;
+}
   
   
   

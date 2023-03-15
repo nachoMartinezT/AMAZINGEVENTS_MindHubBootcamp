@@ -180,31 +180,3 @@ const data = {
       },
     ],
   };
-  
-  const cardsContainer = document.getElementById("cards-container");
-  
-  let cards = "";
-  let showCards = (events, cardsContainer) => {
-    for (let event of data.events) {
-        if (event.date > data.currentDate) {
-            cards += `<div class="col-md-4 col-12 mb-3">
-        <div class="card cards card-height h-100">
-            <div class="card-body d-flex flex-column justify-content-between">
-            <img src="${event.image}" class="card-img-top img-fluid" alt="Imagen de la tarjeta">
-              <h5 class="card-title">${event.name}</h5>
-              <p class="card-text">${event.description}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="card-text mb-0 align-self-end">$ ${event.price}</p>
-                <button class="btn btn-primary mt-auto">Details</button>
-              </div>
-            </div>
-            </div>
-        </div>`;
-        }
-      
-    }
-    cardsContainer.innerHTML = cards;
-  };
-  
-  showCards(data.events, cardsContainer);
-  
