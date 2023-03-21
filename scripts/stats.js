@@ -70,7 +70,7 @@ const showStats = async () =>{
   <th>${largerCapacity.name}(${largerCapacity.capacity})</th>
 </tr>`;
 
-console.log(staticsTable);
+
   } catch (error) {
     console.log(error);
   }
@@ -90,19 +90,23 @@ const showUpcomingStats = async ()=>{
 
 
 const upcoming = async () =>{
+  try {
+    
+  } catch (error) {
+    
+  }
   const events = await getEvents();
   const currentDate = await getCurrentDate();
   const upcoming = events.filter(event => event.date > currentDate )
-  console.log(upcoming);
   return upcoming;
 }
-upcoming();
+
 
 const past = async () => {
   const events = await getEvents();
   const currentDate = await getCurrentDate();
   const past = events.filter(event => event.date < currentDate )
-  console.log(past);
+
   return past;
 }
 
@@ -116,7 +120,8 @@ const loadData = (category, totalRevenue, percentageAssist) => {
 
 
 const filterCategory = async (arrayOfEvents) =>{
-  const events = await arrayOfEvents;
+  try {
+    const events = await arrayOfEvents;
   const currentDate =  await getCurrentDate();
   const categoriesFiltered = events.reduce((categories, event) => {
     if (!categories[event.category]) {
@@ -134,7 +139,7 @@ const filterCategory = async (arrayOfEvents) =>{
     let percentageAssist;
     let date = "";
     const eventsCategory = categoriesFiltered[category];
-    console.log(currentDate);
+    
       totalRevenue = eventsCategory.reduce((total, event) => {
         
         if (currentDate < event.date) {
@@ -152,13 +157,13 @@ const filterCategory = async (arrayOfEvents) =>{
           date = 'upcoming'
           return total +  (event.estimate * 100 / event.capacity) / eventsCategory.length
         } 
-        console.log(date);
+        
         if (currentDate > event.date) {
           date = 'past'
           return total + (event.assistance * 100 / event.capacity) / eventsCategory.length
         }
       }, 0);
-      console.log(date);
+      
       if (date == 'upcoming') {
         upcomingTable.innerHTML += `<tr class="font-weight-light">
         <th>${category}</th>
@@ -166,7 +171,7 @@ const filterCategory = async (arrayOfEvents) =>{
         <th>${percentageAssist.toFixed(2)} %</th>
       </tr>`;
       }
-      console.log(upcomingTable);
+      
       if (date == 'past') {
         pastTable.innerHTML += `<tr>
         <th>${category}</th>
@@ -175,12 +180,11 @@ const filterCategory = async (arrayOfEvents) =>{
       </tr>`;
       }
         
-        
-
-        
-    
-    console.log(`Categoría: ${category}, Total recaudado: ${totalRevenue}, Porcentaje de asistencia promedio: ${percentageAssist}%`);
   }
+  } catch (error) {
+    console.log(error);
+  }
+  
 }
 
 filterCategory(upcoming())

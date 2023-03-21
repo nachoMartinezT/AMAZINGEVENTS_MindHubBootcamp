@@ -25,10 +25,10 @@ async function getEvents() {
 
 
 const querySearch = document.location.search; 
-console.log(querySearch);
+
 const id = new URLSearchParams(querySearch).get("id");  
 
-console.log(id);
+
 
 const eventDetails = async () => {
   try {

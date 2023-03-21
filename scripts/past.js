@@ -43,8 +43,6 @@ const showCards = async (events) =>{
   try {
     const arrayOfEvents = await events;
     const current = await currentDate();
-    console.log(current);
-    console.log(arrayOfEvents.date);
     if (arrayOfEvents.length == 0) {
       cardsContainer.innerHTML = "<h2>No matches found</h2>";
       return;
