@@ -1,5 +1,27 @@
-const events = data.events;
+const cardsContainer = document.getElementById("cards-container");
 
+const categoriesContainer = document.getElementById("categories");
+
+const inputSearch = document.getElementById('input-search')
+
+const apiUrl = "https://mindhub-xj03.onrender.com/api/amazing";
+
+const apiJson = "/data.json";
+
+
+async function getEvents() {
+  try{
+    let response = await fetch(apiUrl);
+    if (response.status > 200) {
+      response = await fetch(apiJson)
+    }
+    const dataEvents = await response.json();
+    const events =  dataEvents.events;
+    return events;
+  } catch(error) {
+    console.error(error);
+  } 
+}
 
 
 const querySearch = document.location.search; 
@@ -8,9 +30,13 @@ const id = new URLSearchParams(querySearch).get("id");
 
 console.log(id);
 
-const eventSelected = events.find(event => event._id == id);
+const eventDetails = async () => {
+  try {
+    const events = await getEvents();
+    const eventSelected = events.find(event => event._id == id);
 
-const detailsContainer = document.getElementById("container"); 
+    const detailsContainer = document.getElementById("container"); 
+
 
 
 detailsContainer.innerHTML = `<div class="container mx-auto card mb-5 container-details">
@@ -28,8 +54,11 @@ detailsContainer.innerHTML = `<div class="container mx-auto card mb-5 container-
         </div>
       </div>
     </div>
-  </div>
+  </div>`;
+  } catch (error) {
+    
+  }
+}
 
-`;
 
-//En resumen, este código filtra y transforma datos de personajes de un conjunto de datos y los muestra en una tarjeta HTML, en función del parámetro "id" proporcionado en la URL.
+eventDetails();

@@ -20,7 +20,7 @@ header div h6 {
 }
 
 header {
-    width: 100vw;
+    width: 100%;
 }
 
 .paginator-baner {
@@ -32,12 +32,19 @@ header {
     transition: transform 0.2s;
     height: 25rem;
 }
+.cards img {
+  height: 15rem;
+  object-fit: cover;
+}
 
-/* @media screen and (max-width: 767px) {
-    .cards {
-      height: 22rem;
-    }
-  } */
+@media screen and (min-width: 768px) and (max-width: 990px) {
+  .cards img {
+    height: 10rem;
+    object-fit: cover;
+  }
+  
+  }
+
 
 
 
@@ -45,9 +52,7 @@ header {
     transform: translateY(-3px);
   }
 
-/* .cards img {
-    height: 10rem;
-} */
+
   
 
   h1 {

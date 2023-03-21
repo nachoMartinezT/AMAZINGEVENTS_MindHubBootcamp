@@ -4,27 +4,54 @@ const categoriesContainer = document.getElementById("categories");
 
 const inputSearch = document.getElementById('input-search')
 
-const events = data.events;
+const apiUrl = "https://mindhub-xj03.onrender.com/api/amazing";
 
-const currentDate = data.currentDate;
+const apiJson = "/data.json";
 
-
-
-const combinedFilter = ()=>{
-  let firstFilter = filterInputText(events, inputSearch.value)
-  let secondFilter = filteredCategories(firstFilter)
-  showCards(secondFilter)
+const currentDate = async ()=>{
+  try {
+    let response = await fetch(apiUrl);
+    if (response.status > 200) {
+      response = await fetch(apiJson)
+    }
+    const dataEvents = await response.json();
+    const currentDate =  dataEvents.currentDate;
+    return currentDate;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 
-const showCards = arrayOfEvents =>{
-  if (arrayOfEvents.length == 0) {
-    cardsContainer.innerHTML = "<h2>No matches found</h2>";
-    return;
+const getEvents = async ()=> {
+  try{
+    let response = await fetch(apiUrl);
+    if (response.status > 200) {
+      response = await fetch(apiJson)
+    }
+    const dataEvents = await response.json();
+    const events =  dataEvents.events;
+    return events;
+  } catch(error) {
+    console.error(error);
+  } 
+}
+
+
+
+const showCards = async (events) =>{
+  try {
+    const arrayOfEvents = await events;
+    const current = await currentDate();
+    console.log(current);
+    console.log(arrayOfEvents.date);
+    if (arrayOfEvents.length == 0) {
+      cardsContainer.innerHTML = "<h2>No matches found</h2>";
+      return;
   }
   let cards = "";
   arrayOfEvents.forEach(event=>{
-        if (event.date > currentDate) {
+        if (event.date > current) {
             cards += `<div class="col-md-4 col-12 mb-3">
         <div class="card cards card-height h-100">
             <div class="card-body d-flex flex-column justify-content-between">
@@ -33,7 +60,7 @@ const showCards = arrayOfEvents =>{
               <p class="card-text">${event.description}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <p class="card-text mb-0 align-self-end">$ ${event.price}</p>
-                <button class="btn btn-primary mt-auto">Details</button>
+                <a href="./details.html?id=${event._id}" class="btn btn-primary">Details</a>
               </div>
             </div>
             </div>
@@ -41,10 +68,15 @@ const showCards = arrayOfEvents =>{
         }
   });
   cardsContainer.innerHTML = cards; 
+  } catch (error) {
+    console.log(error);
+  }
+  
 }
 
 
-const showCategories = arrayOfEvents =>{
+const showCategories = async () =>{
+  const arrayOfEvents = await getEvents();
   let checkCategories = "";
   let allCategories = arrayOfEvents.map(element => element.category);
   let categories = new Set(allCategories);
@@ -59,15 +91,19 @@ const showCategories = arrayOfEvents =>{
 }
 
 
-const filterInputText = (arrayOfEvents, text)=>{
+const filterInputText = async (text)=>{
+  const arrayOfEvents = await getEvents();
   let filteredArray = arrayOfEvents.filter(element => element.name.toLowerCase().includes(text.toLowerCase()))
   return filteredArray
 }
 
 
 
-const filteredCategories = arrayOfEvents =>{
-  let checkboxes = document.querySelectorAll("input[type='checkbox']")
+const filteredCategories = async (events) =>{
+  try {
+    const arrayOfEvents = await events;
+    showCategories;
+    let checkboxes = document.querySelectorAll("input[type='checkbox']")
     console.log(checkboxes);
     let arrayChecks = Array.from(checkboxes)
     console.log(arrayChecks);
@@ -81,16 +117,27 @@ const filteredCategories = arrayOfEvents =>{
     let arrayFiltrado = arrayOfEvents.filter(element => checkValues.includes(element.category))
     console.log(arrayFiltrado);
     return arrayFiltrado
+  } catch (error) {
+    console.log(error);
+  }
+  
 }
 
+const combinedFilter = ()=>{
+  let firstFilter = filterInputText(inputSearch.value)
+  let secondFilter = filteredCategories(firstFilter)
+  showCards(secondFilter)
+}
 
-showCards(events); 
-showCategories(events);
+const start = ()=>{
+  showCards(getEvents()); 
+  showCategories();
+  inputSearch.addEventListener('input',combinedFilter);
+  categoriesContainer.addEventListener('change',combinedFilter);
+}
 
+start();
 
-inputSearch.addEventListener('input',combinedFilter)
-
-categoriesContainer.addEventListener('change',combinedFilter)
 
 
   
