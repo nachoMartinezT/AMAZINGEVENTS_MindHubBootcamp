@@ -85,7 +85,12 @@ footer p {
 }
   
   
-  
+.img-details{
+  height: 25rem;
+  object-fit: scale-down;
+}
+
+
   
 
 

@@ -41,10 +41,10 @@ const eventDetails = async () => {
 
 detailsContainer.innerHTML = `<div class="container mx-auto card mb-5 container-details">
     <div class="row h-100 " >
-      <div class="col-md-6">
-        <img src="${eventSelected.image}" class="img-details img-fluid mx-auto my-auto " alt="Image of event">
+      <div class="col-md-7 div-img-details">
+        <img src="${eventSelected.image}" class="img-details img-fluid  rounded mx-auto" alt="Image of event">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div class="card-body">
           <h5 class="card-title fs-1">${eventSelected.name}</h5>
           <p class="card-text fs-4">${eventSelected.description}</p>
